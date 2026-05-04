@@ -3,16 +3,16 @@ name: Internal Links Check
 on:
   pull_request:
     paths:
-      - 'docs/**'
+      - docs/**
       - '**/*.md'
-      - '.github/workflows/links-check.yml'
+      - .github/workflows/links-check.yml
 
 permissions:
   contents: read
 
 jobs:
   linkChecker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -59,4 +59,4 @@ jobs:
           paths: ${{ steps.changed-md.outputs.files }}
           retry: true
           redirects: error
-          linksToSkip: "https://github.com/orgs/fastify/.*,https://github.com/fastify/fastify/security/advisories/new"
+          linksToSkip: https://github.com/orgs/fastify/.*,https://github.com/fastify/fastify/security/advisories/new
